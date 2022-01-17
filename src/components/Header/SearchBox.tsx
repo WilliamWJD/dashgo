@@ -1,11 +1,10 @@
 import { Flex, Icon, Input } from "@chakra-ui/react";
 import { useRef } from "react";
+import { useForm } from "react-hook-form";
 import { RiSearchLine } from "react-icons/ri";
 
 export function SearchBox() {
-    const searchInputRef = useRef<HTMLInputElement>(null)
-
-    console.log(searchInputRef.current.value)
+    const { register } = useForm();
 
     return (
         <Flex
@@ -30,7 +29,7 @@ export function SearchBox() {
                 _placeholder={{
                     color: "gray.400"
                 }}
-                ref={searchInputRef}
+                {...register("search")}
             />
 
             <Icon as={RiSearchLine} fontSize="20" />
